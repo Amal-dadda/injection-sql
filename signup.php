@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Supprimer les anciennes valeurs si la page est visitée directement (pas après une redirection avec erreur)
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' && !isset($_SESSION['error_msg'])) {
     unset($_SESSION['firstName'], $_SESSION['lastName'], $_SESSION['email']);
 }
