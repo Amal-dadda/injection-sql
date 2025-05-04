@@ -25,7 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
     $newpassword = $_POST["password"];
 
 
-    // le mot de passe doit avoir au moin 12 caractere avec des chiffre, des lettre majuscule et minuscule et des symbols comme (!@#%&^) ; exemple : AmalDadda123! 
+    // le mot de passe doit avoir au moin 12 caractere avec des chiffres, des lettres majuscules et minusculeset des symbols comme (!@#%&^) ;
+    //exemple d'un mdp valide: AmalDadda123! 
     if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{12,}$/', $newpassword)) {
         $_SESSION['error_msg'] = "Password must be at least 12 characters long and contain letters, numbers, and symbols (!@#$%^&*).";
         $_SESSION['firstName'] = $nom;
