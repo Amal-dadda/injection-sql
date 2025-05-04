@@ -43,7 +43,7 @@ if (isset($_POST["submit"])) {
                 header("location:client.php");
                 exit();
             } else {
-                $_SESSION['error_msg'] = "Connexion invalide";
+                $_SESSION['error_msg'] = "Mot de pass incorrect !";
                 header("Location: login.php");
                 exit();
             }

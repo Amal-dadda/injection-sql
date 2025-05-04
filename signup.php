@@ -21,8 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
     $nom = $_POST["firstName"];
     $prenom = $_POST["lastName"];
     $email = $_POST["email"];
+
     $newpassword = $_POST["password"];
 
+
+    // le mot de passe doit avoir au moin 12 caractere avec des chiffre, des lettre majuscule et minuscule et des symbols comme (!@#%&^) ; exemple : AmalDadda123! 
     if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{12,}$/', $newpassword)) {
         $_SESSION['error_msg'] = "Password must be at least 12 characters long and contain letters, numbers, and symbols (!@#$%^&*).";
         $_SESSION['firstName'] = $nom;
@@ -31,7 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
         header("Location: signup.php");
         exit();
     } else {
-        $password = password_hash($newpassword, PASSWORD_DEFAULT);
+
+        $password = password_hash($newpassword, PASSWORD_DEFAULT); //hashage du mdp 
+
+        //utilisation des requêtes préparées
         $req = $connection->prepare("INSERT INTO user VALUES (0, :nom, :prenom, :email, :pass ,'')");
         $req->execute([
             "nom" => $nom,
