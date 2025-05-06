@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS secure;
+USE secure;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(30) NOT NULL,
+    prenom VARCHAR(40) NOT NULL ,
+    email TEXT NOT NULL,
+    pass TEXT NOT NULL ,
+    token TEXT NOT NULL
+);
